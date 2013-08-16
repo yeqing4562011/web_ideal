@@ -18,18 +18,18 @@ import com.ideal.utility.resource.PropertiesUtil;
 import com.ideal.utility.util.ApplicationContextHolder;
 
 /**
- * 
+ *
 * @ClassName: IdealFirstWebController
 * @Description: TODO
 * @author yq
-* @date 2013Äê8ÔÂ4ÈÕ ÏÂÎç8:32:58
+* @date 2013ï¿½ï¿½8ï¿½ï¿½4ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½8:32:58
 *
  */
 @Controller
-public class IdealFirstWebController {
-	
+public class IdealFirstWebController extends ControllerBase{
+
 	/**
-	* @Title: gotoHtml 
+	* @Title: gotoHtml
 	* @Description: TODO
 	* @param modelMap
 	* @param request
@@ -44,18 +44,18 @@ public class IdealFirstWebController {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		Map<String, Object> mapDate=new HashMap<String, Object>();
-		IFirstIdealCommonService firstIdealCommonService = ApplicationContextHolder.get("firstIdealCommonService");
+		/*IFirstIdealCommonService firstIdealCommonService = ApplicationContextHolder.get("firstIdealCommonService");
 		//firstIdealCommonService.firstHessianServicesRMI();
 		RMIObject rmiObject = new RMIObject();
 		rmiObject.setName("service...............");
 		RMIObject serviceObject = firstIdealCommonService.rmiObject(rmiObject);
-		System.out.println(serviceObject.getName());
+		System.out.println(serviceObject.getName());*/
 		mapDate.put("username", "yq");
 		return mapDate;
 	}
-	
+
 	/**
-	* @Title: accountList 
+	* @Title: accountList
 	* @Description: TODO
 	* @param modelMap
 	* @param request
@@ -72,12 +72,15 @@ public class IdealFirstWebController {
 	throws Exception {
 		Map<String, Object> mapDate=new HashMap<String, Object>();
 		System.out.println("12123");
+		System.out.println(this.getCache());
+		this.getCache().getCache().set("te_", 123);
+		System.out.println(this.getCache().getCache().get("test_one_cache"));
 		mapDate.put("username", "yq");
 		return mapDate;
 	}
-	
+
 	/**
-	* @Title: ajaxFtl 
+	* @Title: ajaxFtl
 	* @Description: TODO
 	* @param modelMap
 	* @param request
@@ -96,9 +99,9 @@ public class IdealFirstWebController {
 		mapDate.put("username", "yq");
 		return "ajax/dealerselect";
 	}
-	
+
 	/**
-	* @Title: findUserByName 
+	* @Title: findUserByName
 	* @Description: TODO
 	* @param modelMap
 	* @param request
@@ -107,12 +110,12 @@ public class IdealFirstWebController {
 	* @return String
 	* @throws
 	 */
-	@RequestMapping(value = "findUserByName2")  
+	@RequestMapping(value = "findUserByName2")
     public String findUserByName(ModelMap modelMap,
 			HttpServletRequest request, HttpServletResponse response) {
 		String userId = PropertiesUtil.getProperty("mall.site.userid");
 		System.out.println(userId);
-        return "ajax/showUser/asd";  
+        return "ajax/showUser/asd";
     }
 
 }
